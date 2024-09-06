@@ -1,10 +1,18 @@
 import harperdb
+from dotenv import load_dotenv
+import os
 
-# for reference use streamlit run app.py to run
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve the credentials from environment variables
+username = os.getenv("HDB_USERNAME")
+password = os.getenv("HDB_PASSWORD")
+
 # Instance
 db = harperdb.HarperDB(url="https://cloud-1-recipe.harperdbcloud.com", 
-                        username="pasta",
-                        password="guy")
+                        username=username,
+                        password=password)
 
 SCHEMA = "recipe_repo"
 TABLE = "recipes"
